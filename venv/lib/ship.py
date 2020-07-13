@@ -5,7 +5,7 @@ class Ship:
         self.screen = ai_game.screen
         self.screen_rect = ai_game.screen.get_rect()
         self.image = pygame.image.load('/Users/RBa/PycharmProjects/Space_invaders/venv/images/FishEgg-icon.png')
-        # Trzeba to skalowac
+        # TODO: Trzeba skalować
         self.rect = self.image.get_rect()
         self.rect.midleft = self.screen_rect.midleft
         self.moving_up = False
