@@ -9,7 +9,7 @@ class alieninvasion:
         pygame.init()
         self.settings = Settings()
 
-        self.screen = pygame.display.set_mode((1200, 800))
+        self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_height))
         pygame.display.set_caption('FISHDOM QUEST')
         self.ship = Ship(self)
 
@@ -20,10 +20,10 @@ class alieninvasion:
             self._update_screen()
 
     def _update_screen(self):
-            self.screen.fill(self.settings.bg_color)
-            self.ship.blitme()
+        self.screen.fill(self.settings.bg_color)
+        self.ship.blitme()
 
-            pygame.display.flip()
+        pygame.display.flip()
 
     def _check_events(self):
         for event in pygame.event.get():
@@ -32,6 +32,8 @@ class alieninvasion:
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_UP:
                     self.ship.moving_up = True
+                if event.key == pygame.K_ESCAPE:
+                    sys.exit()
                 if event.key == pygame.K_DOWN:
                     self.ship.moving_down = True
             elif event.type == pygame.KEYUP:
@@ -41,7 +43,8 @@ class alieninvasion:
                     self.ship.moving_down = False
 
 
-
+# TODO: Trzeba rozbić te check events na dwie funkcje - def KEYDOWN/KEYUP, ponieważ zaraz się zaplątam w tych
+# wszystkich ifach
 
 
 if __name__ == '__main__':
