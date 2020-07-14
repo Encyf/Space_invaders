@@ -27,6 +27,16 @@ class alieninvasion:
             self._check_events()
             self.ship.update()
             self.bullets.update()
+
+            for bullet in self.bullets.copy():
+                if self.settings.Full_screen == 0:
+                    if bullet.rect.right > 1200:
+                        self.bullets.remove(bullet)
+                elif self.settings.Full_screen == 1:
+                    if bullet.rect.right > 2000:
+                        self.bullets.remove(bullet)
+            #print(len(self.bullets))
+# zmienić obie wartości z hard coded, wtedy będzie można zrezygonwać z jednego ifa/elifa
             self._update_screen()
 
     def _update_screen(self):
