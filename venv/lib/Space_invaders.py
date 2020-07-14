@@ -3,7 +3,8 @@ import pygame
 from settings import Settings
 from ship import Ship
 from bullet import Bullet
-
+import time
+# TODO: dodac autofire
 
 class alieninvasion:
     def __init__(self):
@@ -56,9 +57,13 @@ class alieninvasion:
             sys.exit()
 
     def _fire_bullet(self):
-        new_bullet = Bullet(self)
-        self.bullets.add(new_bullet)
+    #  new_bullet = Bullet(self)
+    # self.bullets.add(new_bullet)
+    # powyżej są nieograniczone poziski
 
+        if len(self.bullets) < self.settings.bullets_allowed:
+            new_bullet = Bullet(self)
+            self.bullets.add(new_bullet)
 
     def _check_keyup_events(self, event):
         if event.key == pygame.K_UP:
