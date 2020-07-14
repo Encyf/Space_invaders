@@ -5,6 +5,7 @@ from ship import Ship
 from bullet import Bullet
 import time
 # TODO: dodac autofire
+# TODO: dodac pociski, któ®e zmieniajaą swoja wartość podczas przełączania na full scren
 
 class alieninvasion:
     def __init__(self):
