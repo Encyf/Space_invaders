@@ -27,14 +27,25 @@ class alieninvasion:
 
     def _create_fleet(self):
         alien = Alien(self)
-        self.aliens.add(alien)
+        alien_height = alien.rect.height - 59
+        # print(alien_height)
+        availible_space_y = self.settings.screen_height - (alien_height)//2
+        # print(availible_space_y)
+        number_aliens_y = availible_space_y // (2 * (alien_height))
+        # print(number_aliens_y)
+        for alien_number in range(number_aliens_y):
+            alien = Alien(self)
+            alien.y = alien_height + 2 * alien_height * alien_number
+            alien.rect.y = alien.y
+            self.aliens.add(alien)
 
     def run_game(self):
         while True:
             self._check_events()
             self.ship.update()
             self.bullets.update()
-
+# wywalić pętle for z run_game!!! Run game ma byc czyste. Można zdefiniować nową metode np. self._update_bullets()
+# i zdefnionować funkcję jako def _update_bullets(self), w którym damy poniższą petle. 
             for bullet in self.bullets.copy():
                 if self.settings.Full_screen == 0:
                     if bullet.rect.right > 1200:
