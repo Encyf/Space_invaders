@@ -1,13 +1,17 @@
-import pygame
+# próba zmniejszenia obrazka
 
-class Ship:
-    def __init__(self, ai_game):
-        self.screen = ai_game.screen
-        self.screen_rect = ai_game.screen.get_rect()
-        self.image = pygame.image.load('/Users/RBa/PycharmProjects/Space_invaders/venv/images/FishEgg-icon.png')
 
-        self.rect = self.image.get_rect()
-        self.rect.midbottom = self.screen_rect.midbottom
+def _create_fleet(self):
 
-    def blitme(self):
-        self.screen.blit(self.image, self.rect)
+
+
+def _create_fleet(self):
+    alien = Alien(self)
+    alien_width = alien.rect.width
+    availible_space_x = self.settings.screen_width - (2*alien_width)
+    number_aliens_x = availible_space_x // (2*alien_width)
+    for alien_number in range(number_aliens_x):
+        alien = Alien(self)
+        alien.x = alien_width + 2 * alien_width * alien_number
+        alien.rect.x = alien.x
+        self.aliens.add(alien)
